@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\ArticleRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ */
+class Article
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="ascii_string")
+     */
+    private $Nom;
+
+    /**
+     * @ORM\Column(type="decimal", precision=5, scale=2)
+     */
+    private $Prix;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNom()
+    {
+        return $this->Nom;
+    }
+
+    public function setNom($Nom): self
+    {
+        $this->Nom = $Nom;
+
+        return $this;
+    }
+
+    public function getPrix(): ?string
+    {
+        return $this->Prix;
+    }
+
+    public function setPrix(string $Prix): self
+    {
+        $this->Prix = $Prix;
+
+        return $this;
+    }
+}
